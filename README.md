@@ -49,7 +49,7 @@ pytest --cov=src --cov-report=html
 
 
 ### Модуль **main.py**
-Проверяет работы созданных классов Category и Product:
+Проверяет работу созданных классов Category и Product:
 ```
 # Примеры проверок:
 product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
