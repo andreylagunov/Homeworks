@@ -32,6 +32,8 @@ poetry install
 
 ```
 pytest
+pytest -v
+pytest --verbose
 ```
 
 4. Для формирования отчёта о покрытии тестами инструментом pytest-cov:
@@ -69,6 +71,17 @@ class Product:
     description: str
     price: float | int
     quantity: int
+    
+def __init__(self, name: str, description: str, price: float | int, quantity: int):
+
+@classmethod
+def new_product(cls, prod: dict):
+
+@property
+def price(self):
+
+@price.setter
+def price(self, new_price: int | float):
 ```
 
 
@@ -81,6 +94,13 @@ class Category:
     products: list[Product]
     category_count = 0
     product_count = 0
+    
+def __init__(self, name: str, description: str, products: list[Product]):
+
+@property
+def products(self):
+
+def add_product(self, new_product: Product):
 ```
 
 

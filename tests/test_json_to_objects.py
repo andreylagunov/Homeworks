@@ -59,4 +59,4 @@ def test_get_objects_based_on():
     objects_list = get_objects_based_on(data)
     assert type(objects_list) is list
     assert type(objects_list[0]) is Category
-    assert type(objects_list[0].products[0]) is Product
+    assert type(objects_list[0].products[0]) is str
