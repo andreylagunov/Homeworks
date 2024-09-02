@@ -31,17 +31,21 @@ class Category:
         return prod_list
 
     def add_product(self, new_product: Product) -> None:
-        # Проверяем наличие имени нового товара в имеющемся списке:
-        for prod in self.__products:
-            if prod.name == new_product.name:
-                prod.quantity += new_product.quantity
+        if isinstance(new_product, Product):
+            # Проверяем наличие имени нового товара в имеющемся списке:
+            for prod in self.__products:
+                if prod.name == new_product.name:
+                    prod.quantity += new_product.quantity
 
-                if prod.price < new_product.price:
-                    prod.price = new_product.price
-                return
-        # Если дубликата товара не было, просто добавляем новый товар и увеличиваем кол-во.
-        self.__products.append(new_product)
-        self.product_count += 1
+                    if prod.price < new_product.price:
+                        prod.price = new_product.price
+                    return
+            # Если дубликата товара не было, просто добавляем новый товар и увеличиваем кол-во.
+            self.__products.append(new_product)
+            # self.product_count += 1
+            self.__class__.product_count += 1
+        else:
+            raise TypeError("Попытка добавления в категорию объекта не типа Product.")
 
 
 if __name__ == "__main__":

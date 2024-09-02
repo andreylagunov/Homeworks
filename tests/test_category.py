@@ -1,5 +1,6 @@
 from src.product import Product
 from src.category import Category
+import pytest
 
 
 def test_category_obj_init(get_category_obj):
@@ -10,33 +11,57 @@ def test_category_obj_init(get_category_obj):
 
 
 def test_product_count_attr():
+    Category.product_count = 0
     prod_1 = Product("1", "1", 1, 1)
     prod_2 = Product("1", "1", 1, 1)
     prod_3 = Product("1", "1", 1, 1)
     categ_1 = Category("2", "2", [prod_1, prod_2, prod_3])
-    assert Category.product_count == 13
+    assert Category.product_count == 3
 
 
 def test_category_count_attr():
+    Category.category_count = 0
     categ_1 = Category("11", "11", [1, 2, 3])
     categ_2 = Category("22", "22", [11, 22, 33])
-    assert Category.category_count == 4
+    assert Category.category_count == 2
 
 
 def test_add_product___add_different_product(get_category_obj):
+    Category.product_count = 0
     category1 = get_category_obj
-    assert category1.product_count == 29
+    assert Category.product_count == 0
     product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
     category1.add_product(product4)
-    assert category1.product_count == 30
+    assert Category.product_count == 1
+    product5 = Product("55\" QLED 8K", "Фоновая подсветка", 223000.0, 7)
+    category1.add_product(product5)
+    assert Category.product_count == 2
+    Category.product_count = 0
 
 
 def test_add_product___add_the_same_product(get_category_obj):
     category1 = get_category_obj
-    assert category1.product_count == 39
+    assert Category.product_count == 10
     product4 = Product("name_1", "des_1", 10_000, 1)
     category1.add_product(product4)
-    assert category1.product_count == 39
+    assert Category.product_count == 10
+    Category.product_count = 0
+
+
+def test_add_product___add_not_a_product(get_category_obj):
+    with pytest.raises(TypeError) as exception_info:
+        category1 = get_category_obj
+        category1.add_product("not a product")
+    assert str(exception_info.value) == "Попытка добавления в категорию объекта не типа Product."
+    Category.product_count = 0
+
+
+def test_add_product___add_obj_of_product_class(get_category_obj, get_smartphone):
+    assert Category.product_count == 10
+    category1 = get_category_obj
+    category1.add_product(get_smartphone)
+    assert Category.product_count == 11
+    Category.product_count = 0
 
 
 def test_products_property():
