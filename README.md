@@ -126,6 +126,18 @@ def get_objects_based_on(json_categories_list: list) -> list:
     """
 ```
 
+### Модуль **product_iterator.py**
+Описывает класс ProductIterator. Класс служит для возможности перебора Продуктов в Категории.
+```
+class ProductIterator:
+
+    def __init__(self, category_obj: Category):
+
+    def __iter__(self):
+
+    def __next__(self):
+```
+
 
 ## Лицензия:
 

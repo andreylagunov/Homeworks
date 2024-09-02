@@ -60,3 +60,7 @@ def test_products_property():
       'Iphone 15, 210000.0 руб, Остаток: 8 шт.',
       # 'Xiaomi Redmi Note 11, 31000.0 руб, Остаток: 14 шт.'
     ]
+
+def test__str__method(get_category_obj):
+    category = get_category_obj
+    assert str(category) == "Смартфоны, количество продуктов: 45 шт."
