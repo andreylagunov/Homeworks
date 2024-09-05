@@ -1,4 +1,4 @@
-# Домашнее задание 14.1
+# Домашние задания
 
 
 ## Описание:
@@ -51,7 +51,7 @@ pytest --cov=src --cov-report=html
 
 
 ### Модуль **main.py**
-Проверяет работу созданных классов Category и Product:
+Проверяет работу созданных классов Category, Product и других.
 ```
 # Примеры проверок:
 product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
@@ -64,7 +64,8 @@ print(product1.quantity)
 
 
 ### Модуль **product.py**
-Описывает класс Product
+Описывает класс Product.
+Тестирование в модуле test_product.py пакета tests.
 ```
 class Product:
     name: str
@@ -86,7 +87,8 @@ def price(self, new_price: int | float):
 
 
 ### Модуль **category.py**
-Описывает класс Category
+Описывает класс Category.
+Тестирование в модуле test_category.py пакета tests.
 ```
 class Category:
     name: str
@@ -97,6 +99,8 @@ class Category:
     
 def __init__(self, name: str, description: str, products: list[Product]):
 
+def __str__(self) -> str:
+
 @property
 def products(self):
 
@@ -106,6 +110,7 @@ def add_product(self, new_product: Product):
 
 ### Модуль **json_to_objects.py**
 Реализует функции проверки и конвертации json-данных в объекты Product и Category.
+Тестирование в модуле test_json_to_objects.py пакета tests.
 ```
 def read_json(file_path: str) -> list:
     """
@@ -128,6 +133,7 @@ def get_objects_based_on(json_categories_list: list) -> list:
 
 ### Модуль **product_iterator.py**
 Описывает класс ProductIterator. Класс служит для возможности перебора Продуктов в Категории.
+Тестирование в модуле test_product_iterator.py пакета tests.
 ```
 class ProductIterator:
 
@@ -136,6 +142,39 @@ class ProductIterator:
     def __iter__(self):
 
     def __next__(self):
+```
+
+### Модуль **smartphone.py**
+Описывает класс-продукт "Смартфон".
+Тестирование в модуле test_smartphone.py пакета tests.
+```
+class Smartphone(Product):
+    """Смартфон"""
+
+    efficiency: int | float
+    model: str
+    memory: int
+    color: str
+
+    def __init__(...)
+    
+    def __add__(self, other):
+```
+
+### Модуль **lawngrass.py**
+Описывает класс-продукт "Трава газонная".
+Тестирование в модуле test_lawngrass.py пакета tests.
+```
+class LawnGrass(Product):
+    """Трава газонная"""
+
+    country: str
+    germination_period: str
+    color: str
+
+    def __init__(...)
+    
+    def __add__(self, other):
 ```
 
 
