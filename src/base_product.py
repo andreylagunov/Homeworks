@@ -8,6 +8,10 @@ class BaseProduct(ABC):
         pass
 
     @abstractmethod
+    def __repr__(self):
+        pass
+
+    @abstractmethod
     def __str__(self):
         pass
 
@@ -15,3 +19,10 @@ class BaseProduct(ABC):
     def __add__(self, other):
         pass
 
+    @abstractmethod
+    def new_product(self):
+        pass
+
+    @abstractmethod
+    def price(self):
+        pass

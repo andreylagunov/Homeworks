@@ -177,6 +177,48 @@ class LawnGrass(Product):
     def __add__(self, other):
 ```
 
+### Модуль **repr_mixin.py**
+Описывает класс-примесь для вывода в консоль инфрмации по созданному продукту.
+Тестирование в модуле test_repr_mixin.py пакета tests.
+```
+class ReprMixin:
+    """Дополнительный класс для печати в консоль информации __repr__ созданного объекта"""
+
+    def __init__(self, name: str, description: str, price: float | int, quantity: int):
+    
+    def __repr__(self):
+```
+
+### Модуль **base_product.py**
+Описывает базовый абстрактный класс - шаблон для классов Продуктов.
+```
+class BaseProduct(ABC):
+
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def __repr__(self):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+    @abstractmethod
+    def new_product(self):
+        pass
+
+    @abstractmethod
+    def price(self):
+        pass
+```
+
 
 ## Лицензия:
 

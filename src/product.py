@@ -1,4 +1,8 @@
-class Product:
+from src.base_product import BaseProduct
+from src.repr_mixin import ReprMixin
+
+
+class Product(ReprMixin, BaseProduct):
     name: str
     description: str
     __price: float | int
@@ -9,6 +13,10 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        super().__init__(name, description, price, quantity)
+
+    def __repr__(self):
+        print(f"{self.__class__.__name__}('{self.name}', '{self.description}', {self.__price}, {self.quantity})")
 
     def __str__(self) -> str:
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
@@ -37,3 +45,9 @@ class Product:
                 print(f"Вы изменили цену. Теперь она составляет: {self.__price} руб.")
             else:
                 print(f"Цена товара осталась неизменна: {self.__price} руб.")
+
+
+if __name__ == "__main__":
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
