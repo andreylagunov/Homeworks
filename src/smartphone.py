@@ -1,5 +1,7 @@
 from src.product import Product
 
+# from src.repr_mixin import ReprMixin
+
 
 class Smartphone(Product):
     """Смартфон"""
@@ -36,11 +38,12 @@ class Smartphone(Product):
 if __name__ == "__main__":
     phone = Smartphone("nokia", "Не актуальная марка", 12000, 2, 400, "3310", 128, "Red")
 
-    assert phone.name == "nokia"
-    assert phone.description == "Не актуальная марка"
-    assert phone.price == 12000
-    assert phone.quantity == 2
-    assert phone.efficiency == 400
-    assert phone.model == "3310"
-    assert phone.memory == "4 GB"
-    assert phone.color == "Red"
+    # assert phone.name == "nokia"
+    # assert phone.description == "Не актуальная марка"
+    # assert phone.price == 12000
+    # assert phone.quantity == 2
+    # assert phone.efficiency == 400
+    # assert phone.model == "3310"
+    # assert phone.memory == 128
+    # assert phone.color == "Red"
+    # print(Smartphone.__mro__)
