@@ -47,6 +47,13 @@ class Category:
         else:
             raise TypeError("Попытка добавления в категорию объекта не типа Product.")
 
+    def middle_price(self) -> float:
+        try:
+            average_price = sum(prod.price for prod in self.__products) / len(self.__products)
+        except ZeroDivisionError:
+            average_price = 0
+        return round(average_price, 2)
+
 
 if __name__ == "__main__":
     product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)

@@ -105,6 +105,8 @@ def __str__(self) -> str:
 def products(self):
 
 def add_product(self, new_product: Product):
+
+def middle_price(self) -> float:
 ```
 
 

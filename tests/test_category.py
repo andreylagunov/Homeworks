@@ -86,6 +86,12 @@ def test_products_property():
       # 'Xiaomi Redmi Note 11, 31000.0 руб, Остаток: 14 шт.'
     ]
 
+
 def test__str__method(get_category_obj):
     category = get_category_obj
-    assert str(category) == "Смартфоны, количество продуктов: 45 шт."
+    assert str(category) == "Смартфоны, количество продуктов: 55 шт."
+
+
+def test_middle_price___normal(get_category_obj___for_product_iterator):
+    category = get_category_obj___for_product_iterator
+    assert category.middle_price() == 140333.33

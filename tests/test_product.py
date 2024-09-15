@@ -1,3 +1,5 @@
+import pytest
+
 from src.product import Product
 
 def test_product_obj_init(get_product_obj):
@@ -54,4 +56,10 @@ def test__add__method():
     product2 = Product("Iphone 15", "512GB, Gray space", 200_000.0, 5)
 
     assert (product1 + product2) == 1_500_000.0
+
+
+def test_product_creation_with_zero_quantity():
+    with pytest.raises(ValueError) as exception_info:
+        product_invalid = Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+    assert str(exception_info.value) == "Товар с нулевым количеством не может быть добавлен."
 

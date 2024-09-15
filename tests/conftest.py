@@ -15,7 +15,7 @@ def get_category_obj():
     return Category(
         "Смартфоны",
      "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
-     [Product(f"name_{i}", f"des_{i}", i * 10_000, i) for i in range(10)]
+     [Product(f"name_{i}", f"des_{i}", i * 10_000, i + 1) for i in range(10)]
     )
 
 @pytest.fixture
